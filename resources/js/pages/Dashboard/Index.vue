@@ -16,6 +16,21 @@
                 Create New Task
             </button>
         </div>
+
+        <!-- Search -->
+        <div class="mt-4 flex flex-row">
+            <input class="appearance-none block w-2/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                type="text"
+                v-model="search"
+                placeholder="Search..."
+            >
+            <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 text-sm rounded ml-2 h-12"
+                @click="onSearch"
+            >
+                Search
+            </button>
+        </div>
         <div class="tasks mt-4 grid grid-cols-5 gap-4">
             <div
                 v-for="task in tasks"
@@ -48,7 +63,8 @@ export default {
         taskForm: {
             show: false,
             id: null
-        }
+        },
+        search: null
     }),
     mounted() {
         this.initialize();
@@ -89,6 +105,9 @@ export default {
                 .then((response) => {
                     vm.getTasks()
                 });
+        },
+        onSearch() {
+            this.getTasks()
         }
     }
 }

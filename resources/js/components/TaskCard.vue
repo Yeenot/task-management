@@ -1,5 +1,5 @@
 <template>
-  <div class="task-card flex flex-col border border-gray-600 px-2 py-3">
+  <div class="task-card flex flex-col border border-gray-600 px-2 py-3 rounded-sm">
       <!-- Actions -->
       <div class="flex flex-row-reverse">
         <!-- Delete -->

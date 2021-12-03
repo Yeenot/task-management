@@ -2422,6 +2422,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2433,7 +2448,8 @@ __webpack_require__.r(__webpack_exports__);
       taskForm: {
         show: false,
         id: null
-      }
+      },
+      search: null
     };
   },
   mounted: function mounted() {
@@ -2475,6 +2491,9 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]("/api/tasks/".concat(id)).then(function (response) {
         vm.getTasks();
       });
+    },
+    onSearch: function onSearch() {
+      this.getTasks();
     }
   }
 });
@@ -41934,7 +41953,10 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "task-card flex flex-col border border-gray-600 px-2 py-3" },
+    {
+      staticClass:
+        "task-card flex flex-col border border-gray-600 px-2 py-3 rounded-sm",
+    },
     [
       _c("div", { staticClass: "flex flex-row-reverse" }, [
         _c(
@@ -42210,6 +42232,41 @@ var render = function () {
             on: { click: _vm.onCreateNewTask },
           },
           [_vm._v("\n            Create New Task\n        ")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-4 flex flex-row" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search",
+            },
+          ],
+          staticClass:
+            "appearance-none block w-2/5 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+          attrs: { type: "text", placeholder: "Search..." },
+          domProps: { value: _vm.search },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 text-sm rounded ml-2 h-12",
+            on: { click: _vm.onSearch },
+          },
+          [_vm._v("\n            Search\n        ")]
         ),
       ]),
       _vm._v(" "),
